@@ -1,6 +1,9 @@
 package com.minecrafttas.lotas_light.mixin;
 
+//# craftmine
+//# def
 import org.spongepowered.asm.mixin.Final;
+//# end
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,12 +18,15 @@ import net.minecraft.Util;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.ServerTickRateManager;
 
-@Mixin(MinecraftServer.class)
+@Mixin(MinecraftServer.class)	
 public class MixinMinecraftServer {
 
+	//# craftmine
+	//# def
 	@Shadow
 	@Final
 	private ServerTickRateManager tickRateManager;
+	//# end
 
 	@Shadow
 	private long nextTickTimeNanos;
@@ -28,6 +34,8 @@ public class MixinMinecraftServer {
 	private long offset = 0;
 	private long currentTime = 0;
 
+	//# craftmine
+	//# def
 	@ModifyVariable(method = "runServer", at = @At(value = "STORE"), index = 1, ordinal = 0)
 	public long modifyVariable_preventOverload(long original) {
 		if (isTickrateZero())
@@ -45,12 +53,19 @@ public class MixinMinecraftServer {
 	public long redirectGetMeasuringTimeMsInShouldKeepTicking() {
 		return getCurrentTime();
 	}
+	//# end
 
 	private boolean isTickrateZero() {
+		//# craftmine
+//$$		ServerTickRateManager tickRateManager = ((MinecraftServer)(Object)this).theGame().tickRateManager();
+		//# end
 		return tickRateManager.tickrate() == 0f;
 	}
 
 	private boolean isTickAdvance() {
+		//# craftmine
+//$$		ServerTickRateManager tickRateManager = ((MinecraftServer)(Object)this).theGame().tickRateManager();
+		//# end
 		return ((Tickratechanger) tickRateManager).isAdvanceTick();
 	}
 
@@ -72,7 +87,14 @@ public class MixinMinecraftServer {
 
 	@Inject(method = "stopServer", at = @At("HEAD"))
 	public void inject_stopServer(CallbackInfo ci) {
+		//# craftmine
+//$$		if(((MinecraftServer) (Object) this).theGame() == null)
+//$$			return;
+//$$		
+//$$		Tickratechanger tickrateManager = (Tickratechanger) ((MinecraftServer) (Object) this).theGame().tickRateManager();
+		//# def
 		Tickratechanger tickrateManager = (Tickratechanger) ((MinecraftServer) (Object) this).tickRateManager();
+		//# end
 		tickrateManager.disconnect();
 	}
 }

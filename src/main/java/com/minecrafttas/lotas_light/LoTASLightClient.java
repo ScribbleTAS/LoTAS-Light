@@ -95,7 +95,8 @@ public class LoTASLightClient implements ClientModInitializer {
 		if (server == null) {
 			return;
 		}
-		ServerTickRateManager serverTickrateChanger = server.tickRateManager();
+		ServerTickRateManager serverTickrateChanger = server.theGame().tickRateManager(); //@TheGame;
+		
 		rateIndex = findClosestRateIndex(serverTickrateChanger.tickrate());
 
 		rateIndex++;
@@ -123,7 +124,7 @@ public class LoTASLightClient implements ClientModInitializer {
 		if (server == null) {
 			return;
 		}
-		ServerTickRateManager serverTickrateChanger = server.tickRateManager();
+		ServerTickRateManager serverTickrateChanger = server.tickRateManager();	//@TheGame;
 		rateIndex = findClosestRateIndex(serverTickrateChanger.tickrate());
 
 		rateIndex--;
@@ -152,7 +153,7 @@ public class LoTASLightClient implements ClientModInitializer {
 		if (server == null) {
 			return;
 		}
-		ServerTickRateManager serverTickrateManager = server.tickRateManager();
+		ServerTickRateManager serverTickrateManager = server.tickRateManager();	//@TheGame;
 
 		Tickratechanger serverTickrateChanger = (Tickratechanger) serverTickrateManager;
 
@@ -169,7 +170,7 @@ public class LoTASLightClient implements ClientModInitializer {
 		if (server == null) {
 			return;
 		}
-		ServerTickRateManager serverTickrateManager = server.tickRateManager();
+		ServerTickRateManager serverTickrateManager = server.tickRateManager();	//@TheGame;
 
 		Tickratechanger clientTickrateChanger = (Tickratechanger) clientTickrateManager;
 		Tickratechanger serverTickrateChanger = (Tickratechanger) serverTickrateManager;
@@ -260,7 +261,7 @@ public class LoTASLightClient implements ClientModInitializer {
 		if (server == null) {
 			return;
 		}
-		for (ServerLevel level : server.getAllLevels()) {
+		for (ServerLevel level : server.getAllLevels()) {	//@TheGame;
 			level.noSave = true;
 		}
 
@@ -322,7 +323,7 @@ public class LoTASLightClient implements ClientModInitializer {
 		});
 
 		try {
-			for (ServerLevel level : server.getAllLevels()) {
+			for (ServerLevel level : server.getAllLevels()) {	//@TheGame;
 				level.noSave = true;
 			}
 			mc.setScreen(new SavestateGui(Component.translatable("gui.lotaslight.savestate.load.name"), Component.translatable("gui.lotaslight.savestate.load.start").withStyle(ChatFormatting.YELLOW)));

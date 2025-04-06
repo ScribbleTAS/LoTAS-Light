@@ -28,6 +28,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.Style;
+import net.minecraft.server.MinecraftServer; //@CraftMineServer;
 import net.minecraft.server.level.ServerLevel;
 
 public class SavestateCommand {
@@ -115,8 +116,13 @@ public class SavestateCommand {
 		});
 
 		Minecraft.getInstance().execute(() -> {
+			//#craftmine
+//$$			TheGame server = Minecraft.getInstance().getSingleplayerServer().theGame();
+			//#def
+			MinecraftServer server = Minecraft.getInstance().getSingleplayerServer();
+			//#end
 			try {
-				for (ServerLevel level : Minecraft.getInstance().getSingleplayerServer().getAllLevels()) {
+				for (ServerLevel level : server.getAllLevels()) {
 					level.noSave = true;
 				}
 				setSavestateScreen();
@@ -147,8 +153,13 @@ public class SavestateCommand {
 		});
 
 		mc.execute(() -> {
+			//#craftmine
+//$$			TheGame server = Minecraft.getInstance().getSingleplayerServer().theGame();
+			//#def
+			MinecraftServer server = Minecraft.getInstance().getSingleplayerServer();
+			//#end
 			try {
-				for (ServerLevel level : Minecraft.getInstance().getSingleplayerServer().getAllLevels()) {
+				for (ServerLevel level : server.getAllLevels()) {
 					level.noSave = true;
 				}
 				setSavestateScreen();
@@ -184,8 +195,13 @@ public class SavestateCommand {
 		});
 
 		mc.execute(() -> {
+			//#craftmine
+//$$			TheGame server = Minecraft.getInstance().getSingleplayerServer().theGame();
+			//#def
+			MinecraftServer server = Minecraft.getInstance().getSingleplayerServer();
+			//#end
 			try {
-				for (ServerLevel level : Minecraft.getInstance().getSingleplayerServer().getAllLevels()) {
+				for (ServerLevel level : server.getAllLevels()) {
 					level.noSave = true;
 				}
 				setSavestateScreen();
@@ -217,8 +233,13 @@ public class SavestateCommand {
 		});
 
 		mc.execute(() -> {
+			//#craftmine
+//$$			TheGame server = Minecraft.getInstance().getSingleplayerServer().theGame();
+			//#def
+			MinecraftServer server = Minecraft.getInstance().getSingleplayerServer();
+			//#end
 			try {
-				for (ServerLevel level : Minecraft.getInstance().getSingleplayerServer().getAllLevels()) {
+				for (ServerLevel level : server.getAllLevels()) {
 					level.noSave = true;
 				}
 				setSavestateScreen();
@@ -249,8 +270,13 @@ public class SavestateCommand {
 		});
 
 		mc.execute(() -> {
+			//#craftmine
+//$$			TheGame server = Minecraft.getInstance().getSingleplayerServer().theGame();
+			//#def
+			MinecraftServer server = Minecraft.getInstance().getSingleplayerServer();
+			//#end
 			try {
-				for (ServerLevel level : Minecraft.getInstance().getSingleplayerServer().getAllLevels()) {
+				for (ServerLevel level : server.getAllLevels()) {
 					level.noSave = true;
 				}
 				setLoadstateScreen();
@@ -282,8 +308,13 @@ public class SavestateCommand {
 		});
 
 		mc.execute(() -> {
+			//#craftmine
+//$$			TheGame server = Minecraft.getInstance().getSingleplayerServer().theGame();
+			//#def
+			MinecraftServer server = Minecraft.getInstance().getSingleplayerServer();
+			//#end
 			try {
-				for (ServerLevel level : Minecraft.getInstance().getSingleplayerServer().getAllLevels()) {
+				for (ServerLevel level : server.getAllLevels()) {
 					level.noSave = true;
 				}
 				setLoadstateScreen();

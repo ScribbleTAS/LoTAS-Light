@@ -17,7 +17,11 @@ public class MixinPauseScreen {
 	public void inject_onDisconnect(CallbackInfo ci) {
 		Minecraft mc = Minecraft.getInstance();
 		Tickratechanger client = (Tickratechanger) mc.level.tickRateManager();
-		Tickratechanger server = (Tickratechanger) mc.getSingleplayerServer().tickRateManager();
+		Tickratechanger server = (Tickratechanger) mc.getSingleplayerServer()
+				//#craftmine
+//$$				.theGame()
+				//#end
+				.tickRateManager();
 		client.disconnect();
 		server.disconnect();
 	}

@@ -3,6 +3,7 @@ package com.minecrafttas.lotas_light.savestates;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
@@ -87,7 +88,11 @@ public class SavestateHandler {
 		server = mc.getSingleplayerServer(); // Safety server update, because *sometimes* the server is outdated and it will softlock on saveAll
 
 		logger.trace("Save world & players");
+		//# craftmine
+//$$		server.theGame().saveAllChunks(true, true, true);
+		//# def
 		server.saveEverything(true, true, true);
+		//# end
 
 		while (server.isCurrentlySaving()) {
 
@@ -113,7 +118,9 @@ public class SavestateHandler {
 
 		levelStorage.lock(paths.getSourceFolder());
 
-		for (ServerLevel level : server.getAllLevels()) {
+		Collection<ServerLevel> levels = server.theGame().getAllLevels(); //@TheGame;
+		
+		for (ServerLevel level : levels) {
 			level.noSave = false;
 		}
 
@@ -147,7 +154,7 @@ public class SavestateHandler {
 
 		Minecraft mc = Minecraft.getInstance();
 		server = mc.getSingleplayerServer();
-		Tickratechanger trmServer = (Tickratechanger) server.tickRateManager();
+		Tickratechanger trmServer = (Tickratechanger) server.theGame().tickRateManager(); //@TheGame;
 		Tickratechanger trmClient = (Tickratechanger) mc.level.tickRateManager();
 
 		trmServer.disconnect();
@@ -174,9 +181,18 @@ public class SavestateHandler {
 		mc.createWorldOpenFlows().checkForBackupAndLoad(worldname, () -> mc.setScreen(new TitleScreen()));
 		//# end
 
-		for (ServerLevel level : server.getAllLevels()) {
+		//# craftmine
+//$$		if(server.theGame()!=null) {
+		//# end
+		Collection<ServerLevel> levels = server.theGame().getAllLevels();	//@TheGame;
+		
+		for (ServerLevel level : levels) {
 			level.noSave = false;
 		}
+		//# craftmine
+//$$		}
+		//# end
+		
 		applyMotion = () -> {
 			Vec3 motion = indexer.getCurrentSavestate().motion;
 			if (motion != null)
@@ -186,7 +202,9 @@ public class SavestateHandler {
 		loadStateComplete = () -> {
 			server = mc.getSingleplayerServer();
 
-			for (ServerLevel level : server.getAllLevels()) {
+			Collection<ServerLevel> levels2 = server.theGame().getAllLevels();	//@TheGame;
+			
+			for (ServerLevel level : levels2) {
 				level.noSave = false;
 			}
 
@@ -200,7 +218,8 @@ public class SavestateHandler {
 
 			if (LoTASLight.startTickrate == 0f) {
 				mc.level.tickRateManager().setTickRate(0);
-				mc.getSingleplayerServer().tickRateManager().setTickRate(0);
+				MinecraftServer server = mc.getSingleplayerServer();
+				server.theGame().tickRateManager().setTickRate(0);	//@TheGame;
 			}
 			mc.gui.getChat().clearMessages(true);
 
