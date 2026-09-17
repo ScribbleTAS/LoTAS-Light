@@ -28,13 +28,17 @@ Help translate this mod with [Weblate](https://weblate.minecrafttas.com/projects
   - BoredYukolin
   - JustaSqu1d
 - French
+  - azulamazigh
   - Elvee
+  - Zpiboo
 - German
   - ScribbleTAS
 - Italian
   - LeoAnimates
 - Japanese
+  - 17005162
   - Naruyoko
+  - ScrambledMC
 - Korean
   - swwgdxed
 - LOLCAT
@@ -45,6 +49,8 @@ Help translate this mod with [Weblate](https://weblate.minecrafttas.com/projects
   - NULLderef
 - Portuguese (Brazil)
   - xnqlb
+- Russian
+  - PlayGame1435
 
 ## Setup
 To set up this mod in your IDE, check [CONTRIBUTING.md](https://github.com/MinecraftTAS/LoTAS-Light/blob/develop/CONTRIBUTING.md)
