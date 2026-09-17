@@ -1,6 +1,10 @@
 package com.minecrafttas.lotas_light.savestates.gui;
 
+//# 26.3
+//$$import com.mojang.blaze3d.platform.InputConstants;
+//# def
 import org.lwjgl.glfw.GLFW;
+//# end
 
 import com.minecrafttas.lotas_light.LoTASLight;
 
@@ -50,7 +54,11 @@ public class SavestateRenameGui extends SavestateGui {
 	@Override
 	//# 1.21.10
 //$$	public boolean keyPressed(KeyEvent event) {
+		//## 26.3
+//$$		if (event.key() == InputConstants.KEY_RETURN) {
+		//## def
 //$$		if (event.key() == GLFW.GLFW_KEY_ENTER) {
+		//## end
 //$$			return renameAndExit();
 //$$		}
 //$$		return super.keyPressed(event);
