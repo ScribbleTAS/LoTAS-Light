@@ -148,7 +148,11 @@ public class KeybindManager {
 		Type type = key.getType();
 		int keycode = key.getValue();
 
+		//# 26.3
+//$$		down = type == Type.KEYBOARD ? Keyboard.isKeyDown(keycode) : Mouse.isKeyDown(keycode);
+		//# def
 		down = type == Type.KEYSYM ? Keyboard.isKeyDown(keycode) : Mouse.isKeyDown(keycode);
+		//# end
 
 		if (down) {
 			long currentTime = Util.getMillis();

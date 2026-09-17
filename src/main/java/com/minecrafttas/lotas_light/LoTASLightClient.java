@@ -2,7 +2,11 @@ package com.minecrafttas.lotas_light;
 
 import java.nio.file.Path;
 
+//# 26.3
+//$$import com.mojang.blaze3d.platform.InputConstants;
+//# def
 import org.lwjgl.glfw.GLFW;
+//# end
 
 import com.minecrafttas.lotas_light.config.Configuration;
 import com.minecrafttas.lotas_light.config.Configuration.ConfigOptions;
@@ -117,6 +121,16 @@ public class LoTASLightClient implements ClientModInitializer {
 		//# def
 		String category = "key.category.lotaslight.lotaslight";
 		//# end
+		
+		//# 26.3
+//$$		keybindManager.registerKeybind(new Keybind("key.lotaslight.increaseTickrate", category, InputConstants.KEY_PERIOD, this::increaseTickrate));
+//$$		keybindManager.registerKeybind(new Keybind("key.lotaslight.decreaseTickrate", category, InputConstants.KEY_COMMA, this::decreaseTickrate));
+//$$		keybindManager.registerKeybind(new Keybind("key.lotaslight.freezeTickrate", category, InputConstants.KEY_F8, this::freezeTickrate, KeybindManager::isKeyDown));
+//$$		keybindManager.registerKeybind(new Keybind("key.lotaslight.advanceTickrate", category, InputConstants.KEY_F9, this::advanceTickrate, KeybindManager::isKeyDown));
+//$$		keybindManager.registerKeybind(new Keybind("key.lotaslight.savestate", category, InputConstants.KEY_J, this::savestate));
+//$$		keybindManager.registerKeybind(new Keybind("key.lotaslight.loadstate", category, InputConstants.KEY_K, this::loadstate));
+//$$		keybindManager.registerKeybind(new Keybind("key.lotaslight.duping", category, InputConstants.KEY_O, this::dupe));
+		//# def
 		keybindManager.registerKeybind(new Keybind("key.lotaslight.increaseTickrate", category, GLFW.GLFW_KEY_PERIOD, this::increaseTickrate));
 		keybindManager.registerKeybind(new Keybind("key.lotaslight.decreaseTickrate", category, GLFW.GLFW_KEY_COMMA, this::decreaseTickrate));
 		keybindManager.registerKeybind(new Keybind("key.lotaslight.freezeTickrate", category, GLFW.GLFW_KEY_F8, this::freezeTickrate, KeybindManager::isKeyDown));
@@ -124,7 +138,8 @@ public class LoTASLightClient implements ClientModInitializer {
 		keybindManager.registerKeybind(new Keybind("key.lotaslight.savestate", category, GLFW.GLFW_KEY_J, this::savestate));
 		keybindManager.registerKeybind(new Keybind("key.lotaslight.loadstate", category, GLFW.GLFW_KEY_K, this::loadstate));
 		keybindManager.registerKeybind(new Keybind("key.lotaslight.duping", category, GLFW.GLFW_KEY_O, this::dupe));
-
+		//# end
+		
 		EventClientGameLoop.EVENT.register(keybindManager::onRunClientGameLoop);
 	}
 
